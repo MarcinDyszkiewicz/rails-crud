@@ -1,0 +1,30 @@
+<h3>Lista Wpisów</h3>
+
+<p><%= link_to "Create New Record", new_post_path, :class => "btn btn-success" %></p>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Tytuł</th>
+    <th scope="col">Autor</th>
+    <th scope="col">Opublikowany</th>
+    <th scope="col">Treść</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @posts.each do |post| %>
+  <tr>
+    <th scope="row"><%= post.id %></th>
+    <td><%= post.title %></td>
+    <td><%= post.author %></td>
+    <td><%= post.published ? "tak" : "nie" %></td>
+    <td><%= post.body %></td>
+    <td>
+      <button class="btn btn-control">button</button>
+    </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>

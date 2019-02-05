@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GuestBook</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="page-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <%= link_to "List", posts_path, :class => "nav-link" %>
+              </li>
+              <li class="nav-item">
+               <%= link_to "Create New", new_post_path, :class => "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%#= link_to "Show Single", post_path :post.id, :class => "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <% if flash[:notice] %>
+          <div class="alert alert-success">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <h1> Księga Gości CRUD </h1>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+</html>
