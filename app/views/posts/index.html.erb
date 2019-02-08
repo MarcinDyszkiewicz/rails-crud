@@ -6,10 +6,10 @@
   <thead>
   <tr>
     <th scope="col">#</th>
-    <th scope="col">Tytuł</th>
-    <th scope="col">Autor</th>
-    <th scope="col">Opublikowany</th>
-    <th scope="col">Treść</th>
+    <th scope="col">Title</th>
+    <th scope="col">Author</th>
+    <th scope="col">Published</th>
+    <th scope="col">Body</th>
     <th scope="col"></th>
   </tr>
   </thead>
@@ -19,11 +19,14 @@
     <th scope="row"><%= post.id %></th>
     <td><%= post.title %></td>
     <td><%= post.author %></td>
-    <td><%= post.published ? "tak" : "nie" %></td>
+    <td><%= post.published ? "tak": "nie" %>
+    </td>
     <td><%= post.body %></td>
     <td>
-      <%= link_to "Show", post, class: "btn btn-default btn-xs" %>
-      <%= link_to "Edit", edit_post_path(post), class: "btn btn-primary  btn-xs" %>
+      <%= post.published ? publish_button("Censor", post) : publish_button("Publish", post) %>
+      <%= link_to "Show", post, class: "btn btn-secondary btn-sm" %>
+      <%= link_to "Edit", edit_post_path(post), class: "btn btn-primary btn-sm" %>
+      <%= link_to "Destroy", post, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
     </td>
   </tr>
   <% end %>

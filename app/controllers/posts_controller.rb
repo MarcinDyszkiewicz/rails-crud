@@ -3,6 +3,11 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def published
+    @posts = Post.where(published: true)
+    render action: "index"
+  end
+
   def new
     @post = Post.new
   end
@@ -34,6 +39,28 @@ class PostsController < ApplicationController
     else
       flash[:alert] = "Oops problem"
       render action: "edit"
+    end
+  end
+
+  def publish
+    @post = Post.find(params[:id])
+    if @post.toggle(:published).save
+      flash[:notice] = "Record updated!"
+      redirect_to posts_path
+    else
+      flash[:alert] = "Oops problem"
+      redirect_to posts_path
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:notice] = "Record deleted!"
+      redirect_to posts_path
+    else
+      flash[:alert] = "Oops problem"
+      redirect_to posts_path
     end
   end
 
