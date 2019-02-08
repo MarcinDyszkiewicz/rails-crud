@@ -1,8 +1,8 @@
-<h3>Lista Wpisów</h3>
+<h3>List Published Posts</h3>
 
 <p><%= link_to "Create New Record", new_post_path, :class => "btn btn-success" %></p>
 
-<table class="table">
+<table class="table table-striped">
   <thead>
   <tr>
     <th scope="col">#</th>
@@ -22,7 +22,8 @@
     <td><%= post.published ? "tak" : "nie" %></td>
     <td><%= post.body %></td>
     <td>
-      <button class="btn btn-control">button</button>
+      <%= link_to "Show", post, class: "btn btn-default btn-xs" %>
+      <%= link_to "Edit", edit_post_path(post), class: "btn btn-primary  btn-xs" %>
     </td>
   </tr>
   <% end %>

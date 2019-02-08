@@ -39,8 +39,12 @@
           <div class="alert alert-success">
             <%= flash[:notice] %>
           </div>
+          <% elsif flash[:alert]%>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
+          </div>
         <% end %>
-        <h1> Księga Gości CRUD </h1>
+        <h1> Demo CRUD </h1>
       </div>
       <%= yield %>
     </div>
